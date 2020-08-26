@@ -3,7 +3,17 @@ guid: 7fe13837098d03c4e98013d01093c88f
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blinn1
+    second: {fileID: 2100000, guid: 54b050097f8d12747b01c58dc5a9c7d6, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: snake
+    second: {fileID: 2800000, guid: bdfcdaeacbb1f8b459c5ec789d16f5ae, type: 3}
   materials:
     materialImportMode: 1
     materialName: 0

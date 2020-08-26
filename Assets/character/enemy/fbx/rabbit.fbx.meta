@@ -3,7 +3,12 @@ guid: d9fa37fa709c6ce4ebeb8bc569f35571
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: rabbit
+    second: {fileID: 2800000, guid: f09b85e8ac958884391e9d96be2365a7, type: 3}
   materials:
     materialImportMode: 1
     materialName: 0
