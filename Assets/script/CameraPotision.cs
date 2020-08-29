@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class a : MonoBehaviour
+public class CameraPotision : MonoBehaviour
 {
-    public PlayerMove PlayerMove;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -15,8 +13,7 @@ public class a : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        int bCount;
-        bCount = PlayerMove.itemcount;
-        Debug.Log(bCount); //5
+        Vector3 Player = GameObject.Find("Player").transform.position;
+        transform.position = new Vector3(Player.x, Player.y + 7, Player.z - 4); ;
     }
 }
