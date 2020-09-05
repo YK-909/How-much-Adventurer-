@@ -206,8 +206,8 @@ public class Weapon : MonoBehaviour
         Texture2D texture3 = Resources.Load("斧") as Texture2D;
         Texture2D texture4 = Resources.Load("弓") as Texture2D;
 
-        //Wキー入力でアニメーションの起動及び画像の書き換え
-        if (Input.GetKeyDown(KeyCode.W) && WeaponFaze == 0)
+        //Bキー入力でアニメーションの起動及び画像の書き換え
+        if (Input.GetKeyDown(KeyCode.B) && WeaponFaze == 0)
         {
             animator.SetFloat("W", 1f);
             if (WeaponNumber[s] == 1)
@@ -233,7 +233,7 @@ public class Weapon : MonoBehaviour
             }
             WeaponFaze++;
         }
-        else if (Input.GetKeyDown(KeyCode.W) && WeaponFaze == 1)
+        else if (Input.GetKeyDown(KeyCode.B) && WeaponFaze == 1)
         {
             animator.SetFloat("W", 2f);
             if (WeaponNumber[s] == 1)
@@ -259,7 +259,7 @@ public class Weapon : MonoBehaviour
             }
             WeaponFaze++;
         }
-        else if (Input.GetKeyDown(KeyCode.W) && WeaponFaze == 2)
+        else if (Input.GetKeyDown(KeyCode.B) && WeaponFaze == 2)
         {
             animator.SetFloat("W", 3f);
             if (WeaponNumber[s] == 1)
@@ -285,7 +285,7 @@ public class Weapon : MonoBehaviour
             }
             WeaponFaze++;
         }
-        else if (Input.GetKeyDown(KeyCode.W) && WeaponFaze == 3)
+        else if (Input.GetKeyDown(KeyCode.B) && WeaponFaze == 3)
         {
             animator.SetFloat("W", 4f);
             if (WeaponNumber[s] == 1)
@@ -311,7 +311,7 @@ public class Weapon : MonoBehaviour
             }
             WeaponFaze++;
         }
-        else if (Input.GetKeyDown(KeyCode.W) && WeaponFaze == 4)
+        else if (Input.GetKeyDown(KeyCode.B) && WeaponFaze == 4)
         {
             animator.SetFloat("W", 5f);
             if (WeaponNumber[s] == 1)
