@@ -1601,6 +1601,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: INNU
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c07f18596204d38409839d7aee7131d1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1967082483556170129, guid: c07f18596204d38409839d7aee7131d1,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -3296,7 +3301,7 @@ GameObject:
   - component: {fileID: 1859851549}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
