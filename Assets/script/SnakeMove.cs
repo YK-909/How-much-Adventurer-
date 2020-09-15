@@ -10,6 +10,8 @@ public class SnakeMove : MonoBehaviour
     public Transform target;
     //オブジェクトの移動速度を格納
     public float moveSpeed;
+    //オブジェクトの攻撃速度を格納
+    public float attackMove;
     //オブジェクトが停止するターゲットオブジェクトとの距離を格納する変数
     public float stopDistance;
     //オブジェクトがターゲットに向かって移動を開始する距離を格納する変数
@@ -41,6 +43,12 @@ public class SnakeMove : MonoBehaviour
         {
             //変数moveSpeedを乗算した速度でオブジェクトを前方向に移動する
             transform.position = transform.position + transform.forward * moveSpeed * Time.deltaTime;
+            anim.Play("snake run");
+        }
+
+        if ( distance < stopDistance)
+        {
+            transform.position += transform.forward*attackMove*Time.deltaTime;
         }
     }
     void OnTriggerEnter(Collider other)
@@ -50,7 +58,7 @@ public class SnakeMove : MonoBehaviour
         {
             var rd = GetComponent<Rigidbody>();
             rd.AddForce(-transform.forward * 10f, ForceMode.VelocityChange);
-            anim.Play();
+            anim.Play("snake damage");
         }
     }
 }
