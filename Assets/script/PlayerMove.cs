@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class PlayerMove : MonoBehaviour
 {
+    //アニメーションのため
+    private Animator animtor;
     public float speed = 3.0f;
     public float Sprintspeed = 10.0f;
     //アイテム回収時の数の集計
@@ -16,6 +18,7 @@ public class PlayerMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        animtor = GetComponent<Animator>();
         itemcount = 0;
         treasurecount = 0;
         stan = 0;
@@ -27,22 +30,22 @@ public class PlayerMove : MonoBehaviour
     {
         if (stan == 0)
         {
-            if (Input.GetKey("w"))
+            if (Input.GetKey(KeyCode.UpArrow))
             {
                 transform.rotation = Quaternion.Euler(0, 0, 0);
                 transform.position += transform.forward * speed * Time.deltaTime;
             }
-            if (Input.GetKey("s"))
+            if (Input.GetKey(KeyCode.DownArrow))
             {
                 transform.rotation = Quaternion.Euler(0, 180, 0);
                 transform.position += transform.forward * speed * Time.deltaTime;
             }
-            if (Input.GetKey("d"))
+            if (Input.GetKey(KeyCode.RightArrow))
             {
                 transform.rotation = Quaternion.Euler(0, 90, 0);
                 transform.position += transform.forward * speed * Time.deltaTime;
             }
-            if (Input.GetKey("a"))
+            if (Input.GetKey(KeyCode.LeftArrow))
             {
                 transform.rotation = Quaternion.Euler(0, -90, 0);
                 transform.position += transform.forward * speed * Time.deltaTime;
