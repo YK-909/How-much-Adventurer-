@@ -30,41 +30,83 @@ public class PlayerMove : MonoBehaviour
     {
         if (stan == 0)
         {
+            if (Input.GetKey("left shift"))
+            {
+                speed = Sprintspeed;
+            }
+            else
+            {
+                //歩きの速さの調整をする際はここも
+                speed = 3.0f;
+            }
+
             if (Input.GetKey(KeyCode.UpArrow))
             {
                 transform.rotation = Quaternion.Euler(0, 0, 0);
                 transform.position += transform.forward * speed * Time.deltaTime;
+                if (speed == Sprintspeed)
+                {
+                    animtor.SetBool("player running", true);
+                }
+                else 
+                {
+                    animtor.SetBool("player walking", true);
+                }
             }
-            if (Input.GetKey(KeyCode.DownArrow))
+            else if (Input.GetKey(KeyCode.DownArrow))
             {
                 transform.rotation = Quaternion.Euler(0, 180, 0);
                 transform.position += transform.forward * speed * Time.deltaTime;
+                animtor.SetBool("player waiking", true);
+                if (speed == Sprintspeed)
+                {
+                    animtor.SetBool("player running", true);
+                }
+                else
+                {
+                    animtor.SetBool("player walking", true);
+                }
             }
-            if (Input.GetKey(KeyCode.RightArrow))
+            else if (Input.GetKey(KeyCode.RightArrow))
             {
                 transform.rotation = Quaternion.Euler(0, 90, 0);
                 transform.position += transform.forward * speed * Time.deltaTime;
+                animtor.SetBool("player waiking", true);
+                if (speed == Sprintspeed)
+                {
+                    animtor.SetBool("player running", true);
+                }
+                else
+                {
+                    animtor.SetBool("player walking", true);
+                }
             }
-            if (Input.GetKey(KeyCode.LeftArrow))
+            else if (Input.GetKey(KeyCode.LeftArrow))
             {
                 transform.rotation = Quaternion.Euler(0, -90, 0);
                 transform.position += transform.forward * speed * Time.deltaTime;
+                animtor.SetBool("player waiking", true);
+                if (speed == Sprintspeed)
+                {
+                    animtor.SetBool("player running", true);
+                }
+                else
+                {
+                    animtor.SetBool("player walking", true);
+                }
             }
-            if (Input.GetKey("left shift") && Input.GetKey("w"))
+            else
             {
-                transform.position += transform.forward * Sprintspeed * Time.deltaTime;
+                animtor.SetBool("player walking", false);
+                animtor.SetBool("player running", false);
             }
-            if (Input.GetKey("left shift") && Input.GetKey("s"))
+
+            if (Input.GetKey("z"))
             {
-                transform.position += transform.forward * Sprintspeed * Time.deltaTime;
-            }
-            if (Input.GetKey("left shift") && Input.GetKey("d"))
-            {
-                transform.position += transform.forward * Sprintspeed * Time.deltaTime;
-            }
-            if (Input.GetKey("left shift") && Input.GetKey("a"))
-            {
-                transform.position += transform.forward * Sprintspeed * Time.deltaTime;
+                animtor.SetBool("sword attack", true);
+                Invoke("AttackInterval", 1.05f);
+                //他の武器も同様に
+
             }
         }
     }
@@ -83,20 +125,51 @@ public class PlayerMove : MonoBehaviour
             //other.gameObject.SetActive(false);
             treasurecount = treasurecount + 1;
         }
-        //敵キャラに当たった時にノックバック
+        //スタンした時
         if (other.gameObject.CompareTag("Enemy"))
         {
             var rd = GetComponent<Rigidbody>();
-            //right→forwrard
             rd.AddForce(-transform.forward * 10f, ForceMode.VelocityChange);
             stan = 1;
             Stan.SetActive(true);
             Invoke("Stan2", 2f);
+        }
+        //敵キャラに当たった時 HP等どうするのか
+        if (other.gameObject.CompareTag("Wolf"))
+        {
+            var rd = GetComponent<Rigidbody>();
+            rd.AddForce(-transform.forward * 10f, ForceMode.VelocityChange);
+        }
+        if (other.gameObject.CompareTag("Rabbit"))
+        {
+            var rd = GetComponent<Rigidbody>();
+            rd.AddForce(-transform.forward * 10f, ForceMode.VelocityChange);
+        }
+        if (other.gameObject.CompareTag("Snake"))
+        {
+            var rd = GetComponent<Rigidbody>();
+            rd.AddForce(-transform.forward * 10f, ForceMode.VelocityChange);
+        }
+        if (other.gameObject.CompareTag("Salamander"))
+        {
+            var rd = GetComponent<Rigidbody>();
+            rd.AddForce(-transform.forward * 15f, ForceMode.VelocityChange);
+        }
+        if (other.gameObject.CompareTag("Fire"))
+        {
+            var rd = GetComponent<Rigidbody>();
+            rd.AddForce(-transform.forward * 10f, ForceMode.VelocityChange);
         }
     }
     void Stan2()
     {
         stan = 0;
         Stan.SetActive(false);
+    }
+   
+    void AttackInterval()
+    {
+        animtor.SetBool("sword attack", false);
+        //他の武器も同様に
     }
 }
