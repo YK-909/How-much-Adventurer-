@@ -9,6 +9,11 @@ public class PlayerMove : MonoBehaviour
     private Animator animtor;
     public float speed = 3.0f;
     public float Sprintspeed = 10.0f;
+    //武器チェンジ
+    public int weapon;
+    public GameObject sword;
+    public GameObject lance;
+    public GameObject axe;
     //アイテム回収時の数の集計
     public int itemcount;
     public int treasurecount;
@@ -48,7 +53,7 @@ public class PlayerMove : MonoBehaviour
                 {
                     animtor.SetBool("player running", true);
                 }
-                else 
+                else
                 {
                     animtor.SetBool("player walking", true);
                 }
@@ -103,14 +108,55 @@ public class PlayerMove : MonoBehaviour
 
             if (Input.GetKey("z"))
             {
-                animtor.SetBool("sword attack", true);
-                Invoke("AttackInterval", 1.05f);
-                //他の武器も同様に
+                if (weapon == 0)
+                {
+                    animtor.SetBool("Sword Attack", true);
+                    Invoke("AttackInterval", 1.05f);
+                }
+                else if (weapon == 1)
+                {
+                    animtor.SetBool("Lance Attack", true);
+                    Invoke("AttackInterval", 0.45f);
+                }
+                else if (weapon == 2)
+                {
+                    animtor.SetBool("Axe Attack", true);
+                    Invoke("AttackInterval", 1.05f);
+                }
+            }
+
+            //武器チェンジ
+            if (Input.GetKey("c"))
+            {
+                weapon += 1;
+                if (weapon > 3) 
+                {
+                    weapon = 0;
+                }
+
+                if (weapon == 0)
+                {
+                    sword.SetActive(true);
+                    lance.SetActive(false);
+                    axe.SetActive(false);
+                }
+                else if (weapon == 1) 
+                {
+                    sword.SetActive(false);
+                    lance.SetActive(true);
+                    axe.SetActive(false);
+                  
+                }
+                else if (weapon == 2)
+                {
+                    sword.SetActive(true);
+                    lance.SetActive(false);
+                    axe.SetActive(true);
+                }
 
             }
         }
     }
-
     void OnTriggerEnter(Collider other)
     {
         //アイテムのカウント
@@ -166,10 +212,12 @@ public class PlayerMove : MonoBehaviour
         stan = 0;
         Stan.SetActive(false);
     }
-   
+
     void AttackInterval()
     {
-        animtor.SetBool("sword attack", false);
+        animtor.SetBool("Sword Attack", false);
+        animtor.SetBool("Axe Attack", false);
+        animtor.SetBool("Lance Attack", false);
         //他の武器も同様に
     }
 }

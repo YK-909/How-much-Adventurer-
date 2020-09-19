@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SnakeMove : MonoBehaviour
+public class SalamanderMove : MonoBehaviour
 {
     //アニメーションのため
     private Animator animtor;
@@ -10,8 +10,6 @@ public class SnakeMove : MonoBehaviour
     public Transform target;
     //オブジェクトの移動速度を格納
     public float moveSpeed;
-    //オブジェクトの攻撃速度を格納
-    public float attackMove;
     //オブジェクトが停止するターゲットオブジェクトとの距離を格納する変数
     public float stopDistance;
     //オブジェクトがターゲットに向かって移動を開始する距離を格納する変数
@@ -19,12 +17,15 @@ public class SnakeMove : MonoBehaviour
     //キャラの体力
     private float HP;
     //討伐数の確認
-    public float snakeHunt;
-
+    public float salamanderHunt;
+    //火の玉
+    public float firetime;
+    private int waittime;
     void Start()
     {
+        waittime = 0;
         //体力の設定
-        HP = 70;
+        HP = 120;
         animtor = GetComponent<Animator>();
     }
 
@@ -49,25 +50,36 @@ public class SnakeMove : MonoBehaviour
             transform.LookAt(target);
             //変数moveSpeedを乗算した速度でオブジェクトを前方向に移動する
             transform.position = transform.position + transform.forward * moveSpeed * Time.deltaTime;
-            animtor.SetBool("snake running", true);
+            animtor.SetBool("salamander run", true);
         }
-        else {
-            animtor.SetBool("snake running", false);
+        else
+        {
+            animtor.SetBool("salamander run", false);
         }
 
-        if ( distance < stopDistance)
+        if (distance <= stopDistance)
         {
-            //攻撃
-            transform.position += transform.forward*attackMove*Time.deltaTime;
-            animtor.SetBool("snake attacking",true);
+            //攻撃とインターバル
+            animtor.SetBool("salamander attack", true);
+            Invoke("Fire",0.3f);
+            var rd = this.GetComponent<Rigidbody>();
+            rd.AddForce(-transform.forward * 10f, ForceMode.VelocityChange);
+            Invoke("wait", 2.0f);
+            if (waittime == 1)
+            {
+                firetime = 0;
+                waittime = 0;
+            }
         }
-        else{
-            animtor.SetBool("snake attacking",false);
+        else
+        {
+            animtor.SetBool("salamander attack", false);
+            firetime = 0;
         }
 
-        if(HP<0)
+        if (HP < 0)
         {
-            snakeHunt += 1;
+            salamanderHunt += 1;
             // すぐに自分を削除
             Destroy(this.gameObject);
         }
@@ -77,37 +89,46 @@ public class SnakeMove : MonoBehaviour
         //被ダメ時にノックバック
         if (other.gameObject.CompareTag("SwordAttack"))
         {
-            animtor.SetBool("snake damaging", true);
+            animtor.SetBool("salamander damage", true);
             var rd = GetComponent<Rigidbody>();
-            rd.AddForce(-transform.forward * 15f, ForceMode.VelocityChange);
+            rd.AddForce(-transform.forward * 10f, ForceMode.VelocityChange);
             HP -= 30;
         }
-        else{
-            animtor.SetBool("snake damaging", false);
+        else
+        {
+            animtor.SetBool("salamander damage", false);
         }
 
         if (other.gameObject.CompareTag("AxeAttack"))
         {
-            animtor.SetBool("snake damaging", true);
+            animtor.SetBool("salamander damage", true);
             var rd = GetComponent<Rigidbody>();
-            rd.AddForce(-transform.forward * 15f, ForceMode.VelocityChange);
+            rd.AddForce(-transform.forward * 10f, ForceMode.VelocityChange);
             HP -= 50;
         }
         else
         {
-            animtor.SetBool("snake damaging", false);
+            animtor.SetBool("salamander damage", false);
         }
 
         if (other.gameObject.CompareTag("LanceAttack"))
         {
-            animtor.SetBool("snake damaging", true);
+            animtor.SetBool("salamander damage", true);
             var rd = GetComponent<Rigidbody>();
-            rd.AddForce(-transform.forward * 15f, ForceMode.VelocityChange);
+            rd.AddForce(-transform.forward * 10f, ForceMode.VelocityChange);
             HP -= 20;
         }
         else
         {
-            animtor.SetBool("snake damaging", false);
+            animtor.SetBool("salamander damage", false);
         }
+    }
+    void Fire()
+    {
+        firetime += 1;
+    }
+    void wait()
+    {
+        waittime = 1;
     }
 }
