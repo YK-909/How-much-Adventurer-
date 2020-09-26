@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SnakeMove : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class SnakeMove : MonoBehaviour
     //キャラの体力
     private float HP;
     //討伐数の確認
-    public float snakeHunt;
+    public static int snakeHunt;
 
     void Start()
     {
@@ -68,6 +69,7 @@ public class SnakeMove : MonoBehaviour
         if(HP<0)
         {
             snakeHunt += 1;
+            //Scoretext.text = string.Format("Score:{0}", snakeHunt);
             // すぐに自分を削除
             Destroy(this.gameObject);
         }
