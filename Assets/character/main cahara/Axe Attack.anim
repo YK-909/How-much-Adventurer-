@@ -115,8 +115,17 @@ AnimationClip:
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
         weightedMode: 0
-        inWeight: {x: 0, y: 0.33333334, z: 0.33333334}
-        outWeight: {x: 0, y: 0.33333334, z: 0.33333334}
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+      - serializedVersion: 3
+        time: 1
+        value: {x: -16.252, y: -32.952, z: 34.161003}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -487,6 +496,13 @@ AnimationClip:
       customType: 4
       isPPtrCurve: 0
     - serializedVersion: 2
+      path: 2333281092
+      attribute: 4
+      script: {fileID: 0}
+      typeID: 4
+      customType: 4
+      isPPtrCurve: 0
+    - serializedVersion: 2
       path: 3452139838
       attribute: 4
       script: {fileID: 0}
@@ -579,13 +595,6 @@ AnimationClip:
       isPPtrCurve: 0
     - serializedVersion: 2
       path: 2823672240
-      attribute: 4
-      script: {fileID: 0}
-      typeID: 4
-      customType: 4
-      isPPtrCurve: 0
-    - serializedVersion: 2
-      path: 2333281092
       attribute: 4
       script: {fileID: 0}
       typeID: 4
@@ -1222,8 +1231,17 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
         weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -16.252
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1241,8 +1259,17 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
         weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -32.952
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1260,8 +1287,17 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
         weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 34.161003
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -2183,7 +2219,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: wast/right_shoulder
+    path: wast/left_shoulder
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2193,7 +2229,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: wast/right_shoulder
+    path: wast/left_shoulder
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2203,7 +2239,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: wast/right_shoulder
+    path: wast/left_shoulder
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2213,7 +2249,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: wast/right_shoulder/right_elbow/right_hand
+    path: wast/right_shoulder
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2223,7 +2259,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: wast/right_shoulder/right_elbow/right_hand
+    path: wast/right_shoulder
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2233,7 +2269,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: wast/right_shoulder/right_elbow/right_hand
+    path: wast/right_shoulder
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2273,7 +2309,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: wast
+    path: wast/left_shoulder/left_elbow
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2283,7 +2319,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: wast
+    path: wast/left_shoulder/left_elbow
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2293,7 +2329,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: wast
+    path: wast/left_shoulder/left_elbow
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2453,7 +2489,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: wast/left_shoulder
+    path: wast/right_shoulder/right_elbow/right_hand
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2463,7 +2499,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: wast/left_shoulder
+    path: wast/right_shoulder/right_elbow/right_hand
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2473,7 +2509,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: wast/left_shoulder
+    path: wast/right_shoulder/right_elbow/right_hand
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2483,7 +2519,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: wast/left_shoulder/left_elbow
+    path: wast
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2493,7 +2529,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: wast/left_shoulder/left_elbow
+    path: wast
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2503,7 +2539,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: wast/left_shoulder/left_elbow
+    path: wast
     classID: 4
     script: {fileID: 0}
   - curve:

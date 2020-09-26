@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Pick Up
   - Enemy
+  - Snake
+  - Salamander
   layers:
   - Default
   - TransparentFX

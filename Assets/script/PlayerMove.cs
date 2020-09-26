@@ -106,30 +106,30 @@ public class PlayerMove : MonoBehaviour
                 animtor.SetBool("player running", false);
             }
 
-            if (Input.GetKey("z"))
+            if (Input.GetKeyDown("z"))
             {
                 if (weapon == 0)
                 {
-                    animtor.SetBool("Sword Attack", true);
+                    animtor.SetBool("sword attack", true);
                     Invoke("AttackInterval", 1.05f);
                 }
                 else if (weapon == 1)
                 {
-                    animtor.SetBool("Lance Attack", true);
-                    Invoke("AttackInterval", 0.45f);
+                    animtor.SetBool("lance attack", true);
+                    Invoke("AttackInterval", 0.8f);
                 }
                 else if (weapon == 2)
                 {
-                    animtor.SetBool("Axe Attack", true);
+                    animtor.SetBool("axe attack", true);
                     Invoke("AttackInterval", 1.05f);
                 }
             }
 
             //武器チェンジ
-            if (Input.GetKey("c"))
+            if (Input.GetKeyDown("c"))
             {
                 weapon += 1;
-                if (weapon > 3) 
+                if (weapon > 2) 
                 {
                     weapon = 0;
                 }
@@ -149,7 +149,7 @@ public class PlayerMove : MonoBehaviour
                 }
                 else if (weapon == 2)
                 {
-                    sword.SetActive(true);
+                    sword.SetActive(false);
                     lance.SetActive(false);
                     axe.SetActive(true);
                 }
@@ -168,7 +168,6 @@ public class PlayerMove : MonoBehaviour
         //宝のカウント
         if (other.gameObject.CompareTag("Treasure"))
         {
-            //other.gameObject.SetActive(false);
             treasurecount = treasurecount + 1;
         }
         //スタンした時
@@ -215,9 +214,9 @@ public class PlayerMove : MonoBehaviour
 
     void AttackInterval()
     {
-        animtor.SetBool("Sword Attack", false);
-        animtor.SetBool("Axe Attack", false);
-        animtor.SetBool("Lance Attack", false);
+        animtor.SetBool("sword attack", false);
+        animtor.SetBool("axe attack", false);
+        animtor.SetBool("lance attack", false);
         //他の武器も同様に
     }
 }
