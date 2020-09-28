@@ -120,34 +120,35 @@ public class PlayerMove : MonoBehaviour
                 }
             }
 
-            //武器チェンジ
-            if (Input.GetKeyDown("c"))
+        //武器チェンジ
+        if (Input.GetKeyDown("c"))
+        {
+            weapon += 1;
+            if (weapon > 2)
             {
-                weapon += 1;
-                if (weapon > 2) 
-                {
-                    weapon = 0;
-                }
+                weapon = 0;
+            }
 
-                if (weapon == 0)
-                {
-                    sword.SetActive(true);
-                    lance.SetActive(false);
-                    axe.SetActive(false);
-                }
-                else if (weapon == 1) 
-                {
-                    sword.SetActive(false);
-                    lance.SetActive(true);
-                    axe.SetActive(false);
-                  
-                }
-                else if (weapon == 2)
-                {
-                    sword.SetActive(false);
-                    lance.SetActive(false);
-                    axe.SetActive(true);
-                }
+            if (weapon == 0)
+            {
+                sword.SetActive(true);
+                lance.SetActive(false);
+                axe.SetActive(false);
+            }
+            else if (weapon == 1)
+            {
+                sword.SetActive(false);
+                lance.SetActive(true);
+                axe.SetActive(false);
+
+            }
+            else if (weapon == 2)
+            {
+                sword.SetActive(false);
+                lance.SetActive(false);
+                axe.SetActive(true);
+            }
+            playerHPtext.text = string.Format("HP:{0}", playerHP);
         }
     }
     void OnTriggerEnter(Collider other)
