@@ -6,6 +6,7 @@ public class Treasure : MonoBehaviour
 {
     private Animator animtor;
     private int place;
+    private int once;
     public int leftMin;
     public int leftMax;
     public int rightMin;
@@ -15,6 +16,7 @@ public class Treasure : MonoBehaviour
     {
         animtor = GetComponent<Animator>();
         place = Random.Range(0, 3);
+        once = 0;
     }
 
     // Update is called once per frame
@@ -48,7 +50,11 @@ public class Treasure : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            animtor.SetBool("open treasure ", true);
+            if (once == 0)
+            {
+                animtor.SetBool("open treasure ", true);
+                once = 1;
+            }
         }
     }
 }

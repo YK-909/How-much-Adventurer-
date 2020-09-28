@@ -29,6 +29,62 @@ public class SnakeMove : MonoBehaviour
         animtor = GetComponent<Animator>();
     }
 
+    void OnTriggerEnter(Collider other)
+    {
+        //被ダメ時にノックバック
+        if (other.gameObject.CompareTag("SwordAttack"))
+        {
+            animtor.SetBool("snake damaging", true);
+            var rd = GetComponent<Rigidbody>();
+            rd.AddForce(-transform.forward * 15f, ForceMode.VelocityChange);
+            HP -= 30;
+            if (HP <= 0)
+            {
+                snakeHunt += 1;
+            }
+        }
+        else
+        {
+            animtor.SetBool("snake damaging", false);
+        }
+
+        if (other.gameObject.CompareTag("AxeAttack"))
+        {
+            animtor.SetBool("snake damaging", true);
+            var rd = GetComponent<Rigidbody>();
+            rd.AddForce(-transform.forward * 15f, ForceMode.VelocityChange);
+            HP -= 50;
+            if (HP <= 0)
+            {
+                snakeHunt += 1;
+            }
+        }
+        else
+        {
+            animtor.SetBool("snake damaging", false);
+        }
+
+        if (other.gameObject.CompareTag("LanceAttack"))
+        {
+            animtor.SetBool("snake damaging", true);
+            var rd = GetComponent<Rigidbody>();
+            rd.AddForce(-transform.forward * 15f, ForceMode.VelocityChange);
+            HP -= 20;
+            if (HP <= 0)
+            {
+                snakeHunt += 1;
+            }
+        }
+        else
+        {
+            animtor.SetBool("snake damaging", false);
+        }
+    }
+    public static int getsalamanderHunt()
+    {
+        return snakeHunt;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -66,50 +122,10 @@ public class SnakeMove : MonoBehaviour
             animtor.SetBool("snake attacking",false);
         }
 
-        if(HP<0)
+        if(HP<=0)
         {
-            snakeHunt += 1;
-            //Scoretext.text = string.Format("Score:{0}", snakeHunt);
             // すぐに自分を削除
             Destroy(this.gameObject);
-        }
-    }
-    void OnTriggerEnter(Collider other)
-    {
-        //被ダメ時にノックバック
-        if (other.gameObject.CompareTag("SwordAttack"))
-        {
-            animtor.SetBool("snake damaging", true);
-            var rd = GetComponent<Rigidbody>();
-            rd.AddForce(-transform.forward * 15f, ForceMode.VelocityChange);
-            HP -= 30;
-        }
-        else{
-            animtor.SetBool("snake damaging", false);
-        }
-
-        if (other.gameObject.CompareTag("AxeAttack"))
-        {
-            animtor.SetBool("snake damaging", true);
-            var rd = GetComponent<Rigidbody>();
-            rd.AddForce(-transform.forward * 15f, ForceMode.VelocityChange);
-            HP -= 50;
-        }
-        else
-        {
-            animtor.SetBool("snake damaging", false);
-        }
-
-        if (other.gameObject.CompareTag("LanceAttack"))
-        {
-            animtor.SetBool("snake damaging", true);
-            var rd = GetComponent<Rigidbody>();
-            rd.AddForce(-transform.forward * 15f, ForceMode.VelocityChange);
-            HP -= 20;
-        }
-        else
-        {
-            animtor.SetBool("snake damaging", false);
         }
     }
 }
