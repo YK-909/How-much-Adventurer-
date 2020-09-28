@@ -17,7 +17,7 @@ public class SalamanderMove : MonoBehaviour
     //キャラの体力
     private float HP;
     //討伐数の確認
-    public float salamanderHunt;
+    public static int salamanderHunt;
     //火の玉
     public float firetime;
     private int waittime;
@@ -27,6 +27,61 @@ public class SalamanderMove : MonoBehaviour
         //体力の設定
         HP = 120;
         animtor = GetComponent<Animator>();
+    }
+    void OnTriggerEnter(Collider other)
+    {
+        //被ダメ時にノックバック
+        if (other.gameObject.CompareTag("SwordAttack"))
+        {
+            animtor.SetBool("salamander damage", true);
+            var rd = GetComponent<Rigidbody>();
+            rd.AddForce(-transform.forward * 10f, ForceMode.VelocityChange);
+            HP -= 30;
+            if (HP <= 0)
+            {
+                salamanderHunt += 1;
+            }
+        }
+        else
+        {
+            animtor.SetBool("salamander damage", false);
+        }
+
+        if (other.gameObject.CompareTag("AxeAttack"))
+        {
+            animtor.SetBool("salamander damage", true);
+            var rd = GetComponent<Rigidbody>();
+            rd.AddForce(-transform.forward * 10f, ForceMode.VelocityChange);
+            HP -= 50;
+            if (HP <= 0)
+            {
+                salamanderHunt += 1;
+            }
+        }
+        else
+        {
+            animtor.SetBool("salamander damage", false);
+        }
+
+        if (other.gameObject.CompareTag("LanceAttack"))
+        {
+            animtor.SetBool("salamander damage", true);
+            var rd = GetComponent<Rigidbody>();
+            rd.AddForce(-transform.forward * 10f, ForceMode.VelocityChange);
+            HP -= 20;
+            if (HP <= 0)
+            {
+                salamanderHunt += 1;
+            }
+        }
+        else
+        {
+            animtor.SetBool("salamander damage", false);
+        }
+    }
+    public static int getsalamanderHunt()
+    {
+        return salamanderHunt;
     }
 
     // Update is called once per frame
@@ -76,51 +131,9 @@ public class SalamanderMove : MonoBehaviour
             animtor.SetBool("salamander attack", false);
             firetime = 0;
         }
-
-        if (HP < 0)
+        if (HP <= 0)
         {
-            salamanderHunt += 1;
-            // すぐに自分を削除
             Destroy(this.gameObject);
-        }
-    }
-    void OnTriggerEnter(Collider other)
-    {
-        //被ダメ時にノックバック
-        if (other.gameObject.CompareTag("SwordAttack"))
-        {
-            animtor.SetBool("salamander damage", true);
-            var rd = GetComponent<Rigidbody>();
-            rd.AddForce(-transform.forward * 10f, ForceMode.VelocityChange);
-            HP -= 30;
-        }
-        else
-        {
-            animtor.SetBool("salamander damage", false);
-        }
-
-        if (other.gameObject.CompareTag("AxeAttack"))
-        {
-            animtor.SetBool("salamander damage", true);
-            var rd = GetComponent<Rigidbody>();
-            rd.AddForce(-transform.forward * 10f, ForceMode.VelocityChange);
-            HP -= 50;
-        }
-        else
-        {
-            animtor.SetBool("salamander damage", false);
-        }
-
-        if (other.gameObject.CompareTag("LanceAttack"))
-        {
-            animtor.SetBool("salamander damage", true);
-            var rd = GetComponent<Rigidbody>();
-            rd.AddForce(-transform.forward * 10f, ForceMode.VelocityChange);
-            HP -= 20;
-        }
-        else
-        {
-            animtor.SetBool("salamander damage", false);
         }
     }
     void Fire()

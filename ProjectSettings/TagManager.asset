@@ -8,6 +8,10 @@ TagManager:
   - Enemy
   - Snake
   - Salamander
+  - Fire
+  - SwordAttack
+  - LanceAttack
+  - AxeAttack
   layers:
   - Default
   - TransparentFX

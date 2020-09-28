@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 62920574}
   - component: {fileID: 62920573}
   m_Layer: 5
-  m_Name: rabbit score
+  m_Name: snake score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,7 +153,7 @@ RectTransform:
   - {fileID: 1098316042}
   - {fileID: 1347777482}
   m_Father: {fileID: 1336220085}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -192,7 +192,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u30A6\u30B5\u30AE\uFF1A0\u5339"
+  m_Text: "\u30D8\u30D3\uFF1A0\u5339"
 --- !u!222 &62920574
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -287,7 +287,7 @@ GameObject:
   - component: {fileID: 162852617}
   - component: {fileID: 162852616}
   m_Layer: 5
-  m_Name: wolf all point
+  m_Name: salamander all point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -309,7 +309,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 816.99994, y: -3.6999984}
+  m_AnchoredPosition: {x: 754.98, y: -3.6999974}
   m_SizeDelta: {x: 200, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &162852616
@@ -521,7 +521,7 @@ GameObject:
   - component: {fileID: 721772046}
   - component: {fileID: 721772045}
   m_Layer: 5
-  m_Name: wolf point
+  m_Name: salamander point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -543,7 +543,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 366.99994, y: -3.6999984}
+  m_AnchoredPosition: {x: 491.98, y: -3.6999974}
   m_SizeDelta: {x: 150, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &721772045
@@ -704,7 +704,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 362.99997, y: 4.9999695}
+  m_AnchoredPosition: {x: 550, y: 4.9999695}
   m_SizeDelta: {x: 150, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &944302015
@@ -760,7 +760,7 @@ GameObject:
   - component: {fileID: 1098316044}
   - component: {fileID: 1098316043}
   m_Layer: 5
-  m_Name: rabbit point
+  m_Name: snake point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -782,7 +782,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 368.99994, y: -3.9999847}
+  m_AnchoredPosition: {x: 550, y: -3.9999847}
   m_SizeDelta: {x: 150, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1098316043
@@ -817,7 +817,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\xD710"
+  m_Text: "\xD720"
 --- !u!222 &1098316044
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -996,8 +996,8 @@ RectTransform:
   m_Children:
   - {fileID: 131447320}
   - {fileID: 628415337}
-  - {fileID: 62920572}
   - {fileID: 2142321714}
+  - {fileID: 62920572}
   - {fileID: 1529480500}
   - {fileID: 182107022}
   m_Father: {fileID: 0}
@@ -1020,7 +1020,7 @@ GameObject:
   - component: {fileID: 1347777484}
   - component: {fileID: 1347777483}
   m_Layer: 5
-  m_Name: rabbit all point
+  m_Name: snake all point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1270,7 +1270,7 @@ GameObject:
   - component: {fileID: 2142321716}
   - component: {fileID: 2142321715}
   m_Layer: 5
-  m_Name: wolf score
+  m_Name: salamander score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1290,12 +1290,12 @@ RectTransform:
   - {fileID: 721772044}
   - {fileID: 162852615}
   m_Father: {fileID: 1336220085}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -374, y: 9}
-  m_SizeDelta: {x: 500, y: 120}
+  m_AnchoredPosition: {x: -311.98, y: 9}
+  m_SizeDelta: {x: 623.96265, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2142321715
 MonoBehaviour:
@@ -1329,7 +1329,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u30AA\u30AA\u30AB\u30DF\uFF1A0\u5339"
+  m_Text: "\u30B5\u30E9\u30DE\u30F3\u30C0\u30FC\uFF1A0\u5339"
 --- !u!222 &2142321716
 CanvasRenderer:
   m_ObjectHideFlags: 0
