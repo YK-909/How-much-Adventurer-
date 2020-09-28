@@ -112,7 +112,7 @@ public class SnakeMove : MonoBehaviour
             animtor.SetBool("snake running", false);
         }
 
-        if ( distance < stopDistance)
+        if ( distance <= stopDistance)
         {
             //攻撃
             transform.position += transform.forward*attackMove*Time.deltaTime;
