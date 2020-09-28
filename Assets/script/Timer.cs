@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
-    public TextAlignment timerTexts;
-    float totalTime = 10;
+    public Text timerTexts;
+    float totalTime = 420;
     int retime;
 
     // Start is called before the first frame update
@@ -21,6 +21,7 @@ public class Timer : MonoBehaviour
     {
         totalTime -= Time.deltaTime;
         retime = (int)totalTime;
+        timerTexts.text = retime.ToString();
         if (retime == 0)
         {
             SceneManager.LoadScene("result");

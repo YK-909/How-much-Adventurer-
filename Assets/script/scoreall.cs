@@ -11,9 +11,11 @@ public class scoreall : MonoBehaviour
     public Text snakeallpoint;
     public Text treasureText;
     public Text treasureallpoint;
+    public Text allscore;
     int salamanderHunt;
     int snakeHunt;
     int treasurecount;
+    int all;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +28,8 @@ public class scoreall : MonoBehaviour
         treasurecount = PlayerMove.getTreasure();
         treasureText.text = string.Format("宝物:{0}個", treasurecount);
         treasureallpoint.text = string.Format("{0}", treasurecount * 40);
+        all = salamanderHunt * 30 + snakeHunt * 20 + treasurecount * 40;
+        allscore.text = string.Format("合計:{0}点", all);
 
     }
 
