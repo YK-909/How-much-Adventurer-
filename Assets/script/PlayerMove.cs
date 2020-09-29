@@ -40,66 +40,86 @@ public class PlayerMove : MonoBehaviour
                 speed = 2.0f;
             }
 
-            if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+            transform.position += transform.forward * speed * Time.deltaTime;
+            if (speed == Sprintspeed)
             {
-                transform.rotation = Quaternion.Euler(0, 0, 0);
-                transform.position += transform.forward * speed * Time.deltaTime;
-                if (speed == Sprintspeed)
-                {
-                    animtor.SetBool("player running", true);
-                }
-                else
-                {
-                    animtor.SetBool("player walking", true);
-                }
-            }
-            else if (Input.GetKey(KeyCode.DownArrow))
-            {
-                transform.rotation = Quaternion.Euler(0, 180, 0);
-                transform.position += transform.forward * speed * Time.deltaTime;
-                animtor.SetBool("player waiking", true);
-                if (speed == Sprintspeed)
-                {
-                    animtor.SetBool("player running", true);
-                }
-                else
-                {
-                    animtor.SetBool("player walking", true);
-                }
-            }
-            else if (Input.GetKey(KeyCode.RightArrow))
-            {
-                transform.rotation = Quaternion.Euler(0, 90, 0);
-                transform.position += transform.forward * speed * Time.deltaTime;
-                animtor.SetBool("player waiking", true);
-                if (speed == Sprintspeed)
-                {
-                    animtor.SetBool("player running", true);
-                }
-                else
-                {
-                    animtor.SetBool("player walking", true);
-                }
-            }
-            else if (Input.GetKey(KeyCode.LeftArrow))
-            {
-                transform.rotation = Quaternion.Euler(0, -90, 0);
-                transform.position += transform.forward * speed * Time.deltaTime;
-                animtor.SetBool("player waiking", true);
-                if (speed == Sprintspeed)
-                {
-                    animtor.SetBool("player running", true);
-                }
-                else
-                {
-                    animtor.SetBool("player walking", true);
-                }
+                animtor.SetBool("player running", true);
             }
             else
             {
-                animtor.SetBool("player walking", false);
-                animtor.SetBool("player running", false);
+                animtor.SetBool("player walking", true);
             }
+
+            if (transform.position.z >= 111)
+            {
+                transform.position -= transform.forward * speed * Time.deltaTime;
+            }
+        }
+        else if (Input.GetKey(KeyCode.DownArrow))
+        {
+            transform.rotation = Quaternion.Euler(0, 180, 0);
+            transform.position += transform.forward * speed * Time.deltaTime;
+            animtor.SetBool("player waiking", true);
+            if (speed == Sprintspeed)
+            {
+                animtor.SetBool("player running", true);
+            }
+            else
+            {
+                animtor.SetBool("player walking", true);
+            }
+
+            if (transform.position.z <= 5)
+            {
+                transform.position -= transform.forward * speed * Time.deltaTime;
+            }
+        }
+        else if (Input.GetKey(KeyCode.RightArrow))
+        {
+            transform.rotation = Quaternion.Euler(0, 90, 0);
+            transform.position += transform.forward * speed * Time.deltaTime;
+            animtor.SetBool("player waiking", true);
+            if (speed == Sprintspeed)
+            {
+                animtor.SetBool("player running", true);
+            }
+            else
+            {
+                animtor.SetBool("player walking", true);
+            }
+
+            if (transform.position.x >= 235)
+            {
+                transform.position -= transform.forward * speed * Time.deltaTime;
+            }
+        }
+        else if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            transform.rotation = Quaternion.Euler(0, -90, 0);
+            transform.position += transform.forward * speed * Time.deltaTime;
+            animtor.SetBool("player waiking", true);
+            if (speed == Sprintspeed)
+            {
+                animtor.SetBool("player running", true);
+            }
+            else
+            {
+                animtor.SetBool("player walking", true);
+            }
+
+            if (transform.position.x <= 5)
+            {
+                transform.position -= transform.forward * speed * Time.deltaTime;
+            }
+        }
+        else
+        {
+            animtor.SetBool("player walking", false);
+            animtor.SetBool("player running", false);
+        }
 
             if (Input.GetKeyDown("z"))
             {
