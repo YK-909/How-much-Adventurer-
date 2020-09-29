@@ -61,7 +61,7 @@ public class resporn : MonoBehaviour
 		float x = Random.Range(minX, maxX);
 		float z = Random.Range(minZ, maxZ);
 
-		GameObject.Instantiate(enemys[randomValue], new Vector3(x, 0, z), Quaternion.Euler(0f, randomRotationY, 0f));
+		GameObject.Instantiate(enemys[randomValue], new Vector3(x, 20, z), Quaternion.Euler(0f, randomRotationY, 0f));
 
 		numberOfEnemys++;
 		elapsedTime = 0f;
