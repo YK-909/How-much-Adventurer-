@@ -23,26 +23,26 @@ public class Treasure : MonoBehaviour
     void Update()
     {
         //Player moveで獲得数を数えられている
-        if (place == 0)
-        {
+        //if (place == 0)
+        //{
             //左上
-            transform.position = new Vector3(leftMax, 0, rightMax);
-        }
-        if (place == 1)
-        {
+            //transform.position = new Vector3(leftMax, 0, rightMax);
+        //}
+        //if (place == 1)
+        //{
             //左下
-            transform.position = new Vector3(leftMax, 0, rightMin);
-        }
-        if (place == 2)
-        {
+            //transform.position = new Vector3(leftMax, 0, rightMin);
+        //}
+        //if (place == 2)
+        //{
             //右上
-            transform.position = new Vector3(leftMin, 0, rightMax);
-        }
-        if (place == 3)
-        {
+            //transform.position = new Vector3(leftMin, 0, rightMax);
+        //}
+        //if (place == 3)
+        //{
             //右下
-            transform.position = new Vector3(leftMin, 0, rightMin);
-        }
+            //transform.position = new Vector3(leftMin, 0, rightMin);
+        //}
         //Player moveで数を数えられている
         //獲得した時の反応もPlayer move
     }
