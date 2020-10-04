@@ -120,22 +120,29 @@ public class PlayerMove : MonoBehaviour
             animtor.SetBool("player walking", false);
             animtor.SetBool("player running", false);
         }
-
+        
+        //武器の振るモーション
             if (Input.GetKeyDown("z"))
             {
                 if (weapon == 0)
                 {
+                　　//アニメーション
                     animtor.SetBool("sword attack", true);
+                　　//一定時間後にfalseへ
                     Invoke("AttackInterval", 1.05f);
                 }
                 else if (weapon == 1)
                 {
+                    //アニメーション
                     animtor.SetBool("lance attack", true);
+                    //一定時間後にfalseへ
                     Invoke("AttackInterval", 0.8f);
                 }
                 else if (weapon == 2)
                 {
+                    //アニメーション
                     animtor.SetBool("axe attack", true);
+                    //一定時間後にfalseへ
                     Invoke("AttackInterval", 1.05f);
                 }
             }
@@ -212,6 +219,8 @@ public class PlayerMove : MonoBehaviour
     {
         return treasurecount;
     }
+
+    //武器を振った後のインターバル
     void AttackInterval()
     {
         animtor.SetBool("sword attack", false);
