@@ -2,15 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerMove : MonoBehaviour
 {
+    //SEの呼び出し
+    public AudioClip swordsound;
+    public AudioClip lancesound;
+    public AudioClip axesound;
+    AudioSource audioSource;
     //アニメーションのため
     private Animator animtor;
     public float speed = 3.0f;
     public float Sprintspeed = 10.0f;
     //武器チェンジ
-    public int weapon;
+    private int weapon;
     public GameObject sword;
     public GameObject lance;
     public GameObject axe;
@@ -23,6 +29,7 @@ public class PlayerMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         animtor = GetComponent<Animator>();
     }
 
@@ -40,10 +47,14 @@ public class PlayerMove : MonoBehaviour
                 speed = 2.0f;
             }
 
+       //移動方法
         if (Input.GetKey(KeyCode.UpArrow))
         {
+            //キャラクターが指定の向きを向く
             transform.rotation = Quaternion.Euler(0, 0, 0);
+            //前方に移動する
             transform.position += transform.forward * speed * Time.deltaTime;
+            //ダッシュ時と歩きのアニメーション
             if (speed == Sprintspeed)
             {
                 animtor.SetBool("player running", true);
@@ -52,17 +63,19 @@ public class PlayerMove : MonoBehaviour
             {
                 animtor.SetBool("player walking", true);
             }
-
-            if (transform.position.z >= 111)
+            //移動できる範囲
+            if (transform.position.z >= 125)
             {
                 transform.position -= transform.forward * speed * Time.deltaTime;
             }
         }
         else if (Input.GetKey(KeyCode.DownArrow))
         {
+            //キャラクターが指定の向きを向く
             transform.rotation = Quaternion.Euler(0, 180, 0);
+            //前方に移動する
             transform.position += transform.forward * speed * Time.deltaTime;
-            animtor.SetBool("player waiking", true);
+            //ダッシュ時と歩きのアニメーション
             if (speed == Sprintspeed)
             {
                 animtor.SetBool("player running", true);
@@ -71,17 +84,19 @@ public class PlayerMove : MonoBehaviour
             {
                 animtor.SetBool("player walking", true);
             }
-
-            if (transform.position.z <= 5)
+            //移動できる範囲
+            if (transform.position.z <= 10)
             {
                 transform.position -= transform.forward * speed * Time.deltaTime;
             }
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
+            //キャラクターが指定の向きを向く
             transform.rotation = Quaternion.Euler(0, 90, 0);
+            //前方に移動する
             transform.position += transform.forward * speed * Time.deltaTime;
-            animtor.SetBool("player waiking", true);
+            //ダッシュ時と歩きのアニメーション
             if (speed == Sprintspeed)
             {
                 animtor.SetBool("player running", true);
@@ -90,17 +105,19 @@ public class PlayerMove : MonoBehaviour
             {
                 animtor.SetBool("player walking", true);
             }
-
-            if (transform.position.x >= 235)
+            //移動できる範囲
+            if (transform.position.x >= 230)
             {
                 transform.position -= transform.forward * speed * Time.deltaTime;
             }
         }
         else if (Input.GetKey(KeyCode.LeftArrow))
         {
+            //キャラクターが指定の向きを向く
             transform.rotation = Quaternion.Euler(0, -90, 0);
+            //前方に移動する
             transform.position += transform.forward * speed * Time.deltaTime;
-            animtor.SetBool("player waiking", true);
+            //ダッシュ時と歩きのアニメーション
             if (speed == Sprintspeed)
             {
                 animtor.SetBool("player running", true);
@@ -109,8 +126,8 @@ public class PlayerMove : MonoBehaviour
             {
                 animtor.SetBool("player walking", true);
             }
-
-            if (transform.position.x <= 5)
+            //移動できる範囲
+            if (transform.position.x <= 10)
             {
                 transform.position -= transform.forward * speed * Time.deltaTime;
             }
@@ -124,17 +141,22 @@ public class PlayerMove : MonoBehaviour
         //武器の振るモーション
             if (Input.GetKeyDown("z"))
             {
+
                 if (weapon == 0)
                 {
                 　　//アニメーション
                     animtor.SetBool("sword attack", true);
-                　　//一定時間後にfalseへ
-                    Invoke("AttackInterval", 1.05f);
+                    //SE
+                    audioSource.PlayOneShot(swordsound);
+                    //一定時間後にfalseへ
+                Invoke("AttackInterval", 1.05f);
                 }
                 else if (weapon == 1)
                 {
                     //アニメーション
                     animtor.SetBool("lance attack", true);
+                    //SE
+                    audioSource.PlayOneShot(lancesound);
                     //一定時間後にfalseへ
                     Invoke("AttackInterval", 0.8f);
                 }
@@ -142,6 +164,8 @@ public class PlayerMove : MonoBehaviour
                 {
                     //アニメーション
                     animtor.SetBool("axe attack", true);
+                    //SE
+                    audioSource.PlayOneShot(axesound);
                     //一定時間後にfalseへ
                     Invoke("AttackInterval", 1.05f);
                 }
@@ -175,44 +199,41 @@ public class PlayerMove : MonoBehaviour
                 lance.SetActive(false);
                 axe.SetActive(true);
             }
-            playerHPtext.text = string.Format("HP:{0}", playerHP);
+        }
+        //HPテキストの表示
+        playerHPtext.text = string.Format("HP:{0}", playerHP);
+        //ゲームオーバー
+        if(playerHP<=0)
+        {
+            SceneManager.LoadScene("result");
         }
     }
-    void OnTriggerEnter(Collider other)
+    void OnCollisionEnter(Collision other)
     {
         //宝のカウント
-        if (other.gameObject.CompareTag("Treasure"))
+        if (other.gameObject.CompareTag ("Treasure"))
         {
             treasurecount = 1;
         }
-        //敵キャラに当たった時 HP等どうするのか
-        if (other.gameObject.CompareTag("Wolf"))
-        {
-            var rd = GetComponent<Rigidbody>();
-            rd.AddForce(-transform.forward * 10f, ForceMode.VelocityChange);
-        }
-        if (other.gameObject.CompareTag("Rabbit"))
-        {
-            var rd = GetComponent<Rigidbody>();
-            rd.AddForce(-transform.forward * 10f, ForceMode.VelocityChange);
-        }
+        //敵キャラに当たった時 HPの減少
+        //ノックバック
         if (other.gameObject.CompareTag("Snake"))
         {
-            playerHP -= 15;
+            playerHP -=15;
             var rd = GetComponent<Rigidbody>();
-            rd.AddForce(-transform.forward * 10f, ForceMode.VelocityChange);
+            rd.AddForce(-transform.forward *80f, ForceMode.VelocityChange);
         }
         if (other.gameObject.CompareTag("Salamander"))
         {
             playerHP -= 25;
             var rd = GetComponent<Rigidbody>();
-            rd.AddForce(-transform.forward * 15f, ForceMode.VelocityChange);
+            rd.AddForce(-transform.forward * 80f, ForceMode.VelocityChange);
         }
-        if (other.gameObject.CompareTag("Fire"))
+        if (other.gameObject.tag == "Fire")
         {
             playerHP -= 15;
             var rd = GetComponent<Rigidbody>();
-            rd.AddForce(-transform.forward * 10f, ForceMode.VelocityChange);
+            rd.AddForce(-transform.forward * 80f, ForceMode.VelocityChange);
         }
     }
     public static int getTreasure()
