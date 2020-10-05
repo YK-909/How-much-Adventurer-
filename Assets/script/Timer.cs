@@ -21,7 +21,7 @@ public class Timer : MonoBehaviour
     {
         totalTime -= Time.deltaTime;
         retime = (int)totalTime;
-        timerTexts.text = retime.ToString();
+        timerTexts.text = string.Format("{0}秒", retime);
         if (retime == 0)
         {
             SceneManager.LoadScene("result");

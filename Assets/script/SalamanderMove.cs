@@ -87,12 +87,6 @@ public class SalamanderMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //変数tragetPosを作成してターゲットオブジェクトの座標を格納
-        Vector3 targetPos = target.position;
-        //自分自身のY座標を変数targetのY座標に格納
-        //(ターゲットオブジェクトのX,Z座標のみ参照)
-        targetPos.y = transform.position.y;
-
         //変数distanceを作成してオブジェクトの位置とターゲットオブジェクトの距離を格納
         float distance = Vector3.Distance(transform.position, target.position);
 
