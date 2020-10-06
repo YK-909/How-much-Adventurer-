@@ -29,7 +29,7 @@ public class Treasure : MonoBehaviour
         {
             if (once == 0)
             {
-                animtor.SetBool("open treasure ", true);
+                animtor.SetBool("open treasure", true);
                 once = 1;
             }
         }

@@ -2094,6 +2094,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 1246382953597520110, guid: 4dfda46799a7bc24481127ede2f78365,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1312942430664055883, guid: 4dfda46799a7bc24481127ede2f78365,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2167,6 +2172,11 @@ PrefabInstance:
     - target: {fileID: 5700547844351580495, guid: 4dfda46799a7bc24481127ede2f78365,
         type: 3}
       propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700547844351580495, guid: 4dfda46799a7bc24481127ede2f78365,
+        type: 3}
+      propertyPath: m_UseGravity
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
