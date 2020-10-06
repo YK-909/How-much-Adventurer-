@@ -19,6 +19,7 @@ public class SalamanderMove : MonoBehaviour
     //討伐数の確認
     public static int salamanderHunt;
     //火の玉
+    public GameObject Fire;
     public float firetime;
     private int waittime;
     void Start()
@@ -110,7 +111,7 @@ public class SalamanderMove : MonoBehaviour
         {
             //攻撃とインターバル
             animtor.SetBool("salamander attack", true);
-            Invoke("Fire",0.3f);
+            Invoke("Firetime",0.3f);
             var rd = this.GetComponent<Rigidbody>();
             rd.AddForce(-transform.forward * 10f, ForceMode.VelocityChange);
             Invoke("wait", 2.0f);
@@ -130,8 +131,9 @@ public class SalamanderMove : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-    void Fire()
+    void Firetime()
     {
+        Fire.SetActive(true);
         firetime += 1;
     }
     void wait()
