@@ -22,6 +22,9 @@ public class SalamanderMove : MonoBehaviour
     public GameObject Fire;
     public float firetime;
     private int waittime;
+    //地面落下を防ぐため
+    //この物体のy座標
+    private float y;
     void Start()
     {
         waittime = 0;
@@ -129,6 +132,13 @@ public class SalamanderMove : MonoBehaviour
         if (HP <= 0)
         {
             Destroy(this.gameObject);
+        }
+        //変数にすることでポジションを変更
+        y=this.transform.position.y;
+        //高さが0未満になった時落ちないように
+        if(this.transform.position.y<=0)
+        {
+            y =0 ;
         }
     }
     void Firetime()

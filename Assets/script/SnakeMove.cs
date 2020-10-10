@@ -21,6 +21,9 @@ public class SnakeMove : MonoBehaviour
     private float HP;
     //討伐数の確認
     public static int snakeHunt;
+    //地面落下を防ぐため
+    //この物体のy座標
+    private float y;
 
     void Start()
     {
@@ -121,6 +124,13 @@ public class SnakeMove : MonoBehaviour
         {
             // すぐに自分を削除
             Destroy(this.gameObject);
+        }
+        //変数にすることでポジションを変更
+        y = this.transform.position.y;
+        //高さが0未満になった時落ちないように
+        if (this.transform.position.y <= 1)
+        {
+            y = 1;
         }
     }
 }
