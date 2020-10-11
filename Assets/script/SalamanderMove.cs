@@ -22,11 +22,9 @@ public class SalamanderMove : MonoBehaviour
     public GameObject Fire;
     public float firetime;
     private int waittime;
-    //地面落下を防ぐため
-    //この物体のy座標
-    private float y;
     void Start()
     {
+        firetime = 0;
         waittime = 0;
         //体力の設定
         HP = 120;
@@ -39,7 +37,7 @@ public class SalamanderMove : MonoBehaviour
         {
             animtor.SetBool("salamander damage", true);
             var rd = GetComponent<Rigidbody>();
-            rd.AddForce(-transform.forward * 10f, ForceMode.VelocityChange);
+            rd.AddForce(-transform.forward * 0.5f, ForceMode.VelocityChange);
             HP -= 30;
             if (HP <= 0)
             {
@@ -55,7 +53,7 @@ public class SalamanderMove : MonoBehaviour
         {
             animtor.SetBool("salamander damage", true);
             var rd = GetComponent<Rigidbody>();
-            rd.AddForce(-transform.forward * 10f, ForceMode.VelocityChange);
+            rd.AddForce(-transform.forward * 0.5f, ForceMode.VelocityChange);
             HP -= 50;
             if (HP <= 0)
             {
@@ -71,7 +69,7 @@ public class SalamanderMove : MonoBehaviour
         {
             animtor.SetBool("salamander damage", true);
             var rd = GetComponent<Rigidbody>();
-            rd.AddForce(-transform.forward * 10f, ForceMode.VelocityChange);
+            rd.AddForce(-transform.forward * 0.5f, ForceMode.VelocityChange);
             HP -= 20;
             if (HP <= 0)
             {
@@ -115,8 +113,6 @@ public class SalamanderMove : MonoBehaviour
             //攻撃とインターバル
             animtor.SetBool("salamander attack", true);
             Invoke("Firetime",0.3f);
-            var rd = this.GetComponent<Rigidbody>();
-            rd.AddForce(-transform.forward * 10f, ForceMode.VelocityChange);
             Invoke("wait", 2.0f);
             if (waittime == 1)
             {
@@ -134,11 +130,12 @@ public class SalamanderMove : MonoBehaviour
             Destroy(this.gameObject);
         }
         //変数にすることでポジションを変更
-        y=this.transform.position.y;
+        Vector3 pos = transform.position;
         //高さが0未満になった時落ちないように
-        if(this.transform.position.y<=0)
+        if (this.transform.position.y <= 0)
         {
-            y =0 ;
+            pos.y = 0.0f;
+            transform.position = pos;
         }
     }
     void Firetime()
