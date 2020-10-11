@@ -21,9 +21,6 @@ public class SnakeMove : MonoBehaviour
     private float HP;
     //討伐数の確認
     public static int snakeHunt;
-    //地面落下を防ぐため
-    //この物体のy座標
-    private float y;
 
     void Start()
     {
@@ -94,6 +91,15 @@ public class SnakeMove : MonoBehaviour
         //変数distanceを作成してオブジェクトの位置とターゲットオブジェクトの距離を格納
         float distance = Vector3.Distance(transform.position, target.position);
 
+        //変数にすることでポジションを変更
+        Vector3 pos = transform.position;
+        //高さが0未満になった時落ちないように
+        if (this.transform.position.y <= 0)
+        {
+            pos.y = 0.0f;
+            transform.position = pos;
+        }
+
         //オブジェクトとターゲットオブジェクトの距離判定
         //変数distance(ターゲットオブジェクトの距離)が変数moveDistanceの値より小さければ
         //さらに変数distanceが変数stopDistanceの値よりも大きい場合
@@ -124,13 +130,6 @@ public class SnakeMove : MonoBehaviour
         {
             // すぐに自分を削除
             Destroy(this.gameObject);
-        }
-        //変数にすることでポジションを変更
-        y = this.transform.position.y;
-        //高さが0未満になった時落ちないように
-        if (this.transform.position.y <= 1)
-        {
-            y = 1;
         }
     }
 }
