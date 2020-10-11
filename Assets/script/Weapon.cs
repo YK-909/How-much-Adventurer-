@@ -21,7 +21,7 @@ public class Weapon : MonoBehaviour
         //部位の種類と個数を番号で指定(剣=1,槍=2,斧=3,弓=4,無し=0),今回は剣,槍,弓
         w1 = 1;
         w2 = 2;
-        w3 = 4;
+        w3 = 3;
         w4 = 0;
         w5 = 0;
         //＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊
@@ -88,8 +88,8 @@ public class Weapon : MonoBehaviour
         //Resourcesフォルダから画像データを取得
         Texture2D texture = Resources.Load("剣") as Texture2D;
         Texture2D texture2 = Resources.Load("槍") as Texture2D;
-        Texture2D texture3 = Resources.Load("弓") as Texture2D;
-        Texture2D texture4 = Resources.Load("斧") as Texture2D;
+        Texture2D texture3 = Resources.Load("斧") as Texture2D;
+        Texture2D texture4 = Resources.Load("弓") as Texture2D;
         // Spriteを作って武器を反映させる
         if (WeaponNumber[0] == 1)
         {
